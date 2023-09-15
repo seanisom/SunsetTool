@@ -8,7 +8,36 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
 
-    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
-        <Button x:Name="myButton" Click="myButton_Click">Click Me</Button>
+    <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
+        
+      <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+        <Button x:Name="myButton" Margin="0,25,50,25" Click="myButton_Click">Load From Sim</Button>
+        <Button x:Name="button2" Margin="0,25,0,25" Click="button2_Click">Reset Defaults</Button>
+      </StackPanel>
+      
+      <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+        <Slider x:Name="slider1" Margin="0,25,50,0"
+            Minimum="0.0"
+            Maximum="0.01" StepFrequency="0.00001"  Width="300" ValueChanged="slider1_ValueChanged" />
+        <TextBox x:Name="header1" Header="Scatter B:" Width="150" HorizontalAlignment="Left"/>
+      </StackPanel>
+
+      <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+        <Slider x:Name="slider2" Margin="0,25,50,0"
+            Minimum="0.0"
+            Maximum="0.01" StepFrequency="0.00001"  Width="300" ValueChanged="slider2_ValueChanged" />
+        <TextBox x:Name="header2" Header="Scatter R:" Width="150" HorizontalAlignment="Left"/>
+      </StackPanel>
+
+      <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+        <Slider x:Name="slider3" Margin="0,25,50,0"
+            Minimum="0.0"
+            Maximum="0.01" StepFrequency="0.00001"  Width="300" ValueChanged="slider3_ValueChanged" />
+        <TextBox x:Name="header3" Header="Scatter G:" Width="150" HorizontalAlignment="Left"/>
+      </StackPanel>
+
     </StackPanel>
+
+
+
 </Window>
