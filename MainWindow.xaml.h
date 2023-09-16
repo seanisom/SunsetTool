@@ -26,6 +26,21 @@ namespace winrt::SunsetTool::implementation
 
         void slider3_ValueChanged(Windows::Foundation::IInspectable const& sender,
             Microsoft::UI::Xaml::Controls::Primitives::RangeBaseValueChangedEventArgs const& args);
+
+        void slider4_ValueChanged(Windows::Foundation::IInspectable const& sender,
+            Microsoft::UI::Xaml::Controls::Primitives::RangeBaseValueChangedEventArgs const& args);
+
+        void slider5_ValueChanged(Windows::Foundation::IInspectable const& sender,
+            Microsoft::UI::Xaml::Controls::Primitives::RangeBaseValueChangedEventArgs const& args);
+
+        void slider6_ValueChanged(Windows::Foundation::IInspectable const& sender,
+            Microsoft::UI::Xaml::Controls::Primitives::RangeBaseValueChangedEventArgs const& args);
+
+        void param_TextChanged(Windows::Foundation::IInspectable const& sender,
+            Microsoft::UI::Xaml::Controls::TextChangedEventArgs const& args);
+
+        void offset_TextChanged(Windows::Foundation::IInspectable const& sender,
+            Microsoft::UI::Xaml::Controls::TextChangedEventArgs const& args);
     };
 }
 
