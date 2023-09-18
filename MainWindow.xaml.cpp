@@ -96,6 +96,7 @@ uintptr_t offset_param0 = 0;
 
 uintptr_t baseAddress;
 
+
 namespace winrt::SunsetTool::implementation
 {
     MainWindow::MainWindow()
@@ -164,12 +165,12 @@ namespace winrt::SunsetTool::implementation
         myButton().Content(box_value(L"Loaded!"));
         myButton().IsEnabled(false);
 
-        slider1().Value(scatter1);
-        slider2().Value(scatter2);
-        slider3().Value(scatter3);
-        slider4().Value(param5);
-        slider5().Value(param1);
-        slider6().Value(param2);
+        header1().Text(std::to_wstring(scatter1));
+        header2().Text(std::to_wstring(scatter2));
+        header3().Text(std::to_wstring(scatter3));
+        header4().Text(std::to_wstring(param5));
+        header5().Text(std::to_wstring(param1));
+        header6().Text(std::to_wstring(param2));
 
         std::wstringstream stream;
         stream << std::hex << param0;
@@ -188,76 +189,157 @@ namespace winrt::SunsetTool::implementation
         param1 = 1.0f;
         param2 = 1.0f;
 
-        slider1().Value(scatter1);
-        slider2().Value(scatter2);
-        slider3().Value(scatter3);
-        slider4().Value(param5);
-        slider5().Value(param1);
-        slider6().Value(param2);
+        header1().Text(std::to_wstring(scatter1));
+        header2().Text(std::to_wstring(scatter2));
+        header3().Text(std::to_wstring(scatter3));
+        header4().Text(std::to_wstring(param5));
+        header5().Text(std::to_wstring(param1));
+        header6().Text(std::to_wstring(param2));
     }
-
-    uint32_t result = 0xFFFFFFFF;
 
     void MainWindow::slider1_ValueChanged(Windows::Foundation::IInspectable const& sender, 
         Microsoft::UI::Xaml::Controls::Primitives::RangeBaseValueChangedEventArgs  const& args)
     {
-        scatter1 = static_cast<float>(args.NewValue());
+        auto new_val = static_cast<float>(args.NewValue());
 
-        header1().Text(std::to_wstring(scatter1));
+        if (scatter1 != new_val)
+        {
+            header1().Text(std::to_wstring(new_val));
+        }
+    }
 
-        SIZE_T bytesRead = 0;
-        WriteProcessMemory(Proc, (void*)(offset_scatter1), &scatter1, (SIZE_T)sizeof(scatter1), &bytesRead);
+    void MainWindow::header1_TextChanged(Windows::Foundation::IInspectable const& sender, Microsoft::UI::Xaml::Controls::TextChangedEventArgs const& args)
+    {
+        try
+        {
+            scatter1 = std::stof(winrt::to_string(header1().Text()));
+
+            SIZE_T bytesRead = 0;
+            WriteProcessMemory(Proc, (void*)(offset_scatter1), &scatter1, (SIZE_T)sizeof(scatter1), &bytesRead);
+
+            slider1().Value(scatter1);
+        }
+        catch (...) {};
     }
 
     void MainWindow::slider2_ValueChanged(Windows::Foundation::IInspectable const& sender, Microsoft::UI::Xaml::Controls::Primitives::RangeBaseValueChangedEventArgs const& args)
     {
-        scatter2 = static_cast<float>(args.NewValue());
+        auto new_val = static_cast<float>(args.NewValue());
 
-        header2().Text(std::to_wstring(scatter2));
+        if (scatter2 != new_val)
+        {
+            header2().Text(std::to_wstring(new_val));
+        }
+    }
 
-        SIZE_T bytesRead = 0;
-        WriteProcessMemory(Proc, (void*)(offset_scatter2), &scatter2, (SIZE_T)sizeof(scatter2), &bytesRead);
+    void MainWindow::header2_TextChanged(Windows::Foundation::IInspectable const& sender, Microsoft::UI::Xaml::Controls::TextChangedEventArgs const& args)
+    {
+        try
+        {
+            scatter2 = std::stof(winrt::to_string(header2().Text()));
+
+            SIZE_T bytesRead = 0;
+            WriteProcessMemory(Proc, (void*)(offset_scatter2), &scatter2, (SIZE_T)sizeof(scatter2), &bytesRead);
+
+            slider2().Value(scatter2);
+        }
+        catch (...) {};
     }
 
     void MainWindow::slider3_ValueChanged(Windows::Foundation::IInspectable const& sender, Microsoft::UI::Xaml::Controls::Primitives::RangeBaseValueChangedEventArgs const& args)
     {
-        scatter3 = static_cast<float>(args.NewValue());
+        auto new_val = static_cast<float>(args.NewValue());
 
-        header3().Text(std::to_wstring(scatter3));
+        if (scatter3 != new_val)
+        {
+            header3().Text(std::to_wstring(new_val));
+        }
+    }
 
-        SIZE_T bytesRead = 0;
-        WriteProcessMemory(Proc, (void*)(offset_scatter3), &scatter3, (SIZE_T)sizeof(scatter3), &bytesRead);
+    void MainWindow::header3_TextChanged(Windows::Foundation::IInspectable const& sender, Microsoft::UI::Xaml::Controls::TextChangedEventArgs const& args)
+    {
+        try
+        {
+            scatter3 = std::stof(winrt::to_string(header3().Text()));
+
+            SIZE_T bytesRead = 0;
+            WriteProcessMemory(Proc, (void*)(offset_scatter3), &scatter3, (SIZE_T)sizeof(scatter3), &bytesRead);
+
+            slider3().Value(scatter3);
+        }
+        catch (...) {};
     }
 
     void MainWindow::slider4_ValueChanged(Windows::Foundation::IInspectable const& sender, Microsoft::UI::Xaml::Controls::Primitives::RangeBaseValueChangedEventArgs const& args)
     {
-        param5 = static_cast<float>(args.NewValue());
+        auto new_val = static_cast<float>(args.NewValue());
 
-        header4().Text(std::to_wstring(param5));
+        if (param5 != new_val)
+        {
+            header4().Text(std::to_wstring(new_val));
+        }
+    }
 
-        SIZE_T bytesRead = 0;
-        WriteProcessMemory(Proc, (void*)(offset_param5), &param5, (SIZE_T)sizeof(param5), &bytesRead);
+    void MainWindow::header4_TextChanged(Windows::Foundation::IInspectable const& sender, Microsoft::UI::Xaml::Controls::TextChangedEventArgs const& args)
+    {
+        try
+        {
+            param5 = std::stof(winrt::to_string(header4().Text()));
+
+            SIZE_T bytesRead = 0;
+            WriteProcessMemory(Proc, (void*)(offset_param5), &param5, (SIZE_T)sizeof(param5), &bytesRead);
+
+            slider4().Value(param5);
+        }
+        catch (...) {};
     }
 
     void MainWindow::slider5_ValueChanged(Windows::Foundation::IInspectable const& sender, Microsoft::UI::Xaml::Controls::Primitives::RangeBaseValueChangedEventArgs const& args)
     {
-        param1 = static_cast<float>(args.NewValue());
+        auto new_val = static_cast<float>(args.NewValue());
 
-        header5().Text(std::to_wstring(param1));
+        if (param1 != new_val)
+        {
+            header5().Text(std::to_wstring(new_val));
+        }
+    }
 
-        SIZE_T bytesRead = 0;
-        WriteProcessMemory(Proc, (void*)(offset_param1), &param1, (SIZE_T)sizeof(param1), &bytesRead);
+    void MainWindow::header5_TextChanged(Windows::Foundation::IInspectable const& sender, Microsoft::UI::Xaml::Controls::TextChangedEventArgs const& args)
+    {
+        try
+        {
+            param1 = std::stof(winrt::to_string(header5().Text()));
+
+            SIZE_T bytesRead = 0;
+            WriteProcessMemory(Proc, (void*)(offset_param1), &param1, (SIZE_T)sizeof(param1), &bytesRead);
+
+            slider5().Value(param1);
+        }
+        catch (...) {};
     }
 
     void MainWindow::slider6_ValueChanged(Windows::Foundation::IInspectable const& sender, Microsoft::UI::Xaml::Controls::Primitives::RangeBaseValueChangedEventArgs const& args)
     {
-        param2 = static_cast<float>(args.NewValue());
-        
+        auto new_val = static_cast<float>(args.NewValue());
 
-        header6().Text(std::to_wstring(param2));
+        if (param2 != new_val)
+        {
+            header6().Text(std::to_wstring(new_val));
+        }
+    }
 
-        SIZE_T bytesRead = 0;
-        WriteProcessMemory(Proc, (void*)(offset_param2), &param2, (SIZE_T)sizeof(param2), &bytesRead);
+    void MainWindow::header6_TextChanged(Windows::Foundation::IInspectable const& sender, Microsoft::UI::Xaml::Controls::TextChangedEventArgs const& args)
+    {
+        try
+        {
+            param2 = std::stof(winrt::to_string(header6().Text()));
+
+            SIZE_T bytesRead = 0;
+            WriteProcessMemory(Proc, (void*)(offset_param2), &param2, (SIZE_T)sizeof(param2), &bytesRead);
+
+            slider6().Value(param2);
+        }
+        catch (...) {};
     }
 
     void MainWindow::param_TextChanged(Windows::Foundation::IInspectable const& sender, Microsoft::UI::Xaml::Controls::TextChangedEventArgs const& args)

@@ -21,20 +21,38 @@ namespace winrt::SunsetTool::implementation
         void slider1_ValueChanged(Windows::Foundation::IInspectable const& sender, 
             Microsoft::UI::Xaml::Controls::Primitives::RangeBaseValueChangedEventArgs const& args);
 
+        void header1_TextChanged(Windows::Foundation::IInspectable const& sender,
+            Microsoft::UI::Xaml::Controls::TextChangedEventArgs const& args);
+
         void slider2_ValueChanged(Windows::Foundation::IInspectable const& sender,
             Microsoft::UI::Xaml::Controls::Primitives::RangeBaseValueChangedEventArgs const& args);
+
+        void header2_TextChanged(Windows::Foundation::IInspectable const& sender,
+            Microsoft::UI::Xaml::Controls::TextChangedEventArgs const& args);
 
         void slider3_ValueChanged(Windows::Foundation::IInspectable const& sender,
             Microsoft::UI::Xaml::Controls::Primitives::RangeBaseValueChangedEventArgs const& args);
 
+        void header3_TextChanged(Windows::Foundation::IInspectable const& sender,
+            Microsoft::UI::Xaml::Controls::TextChangedEventArgs const& args);
+
         void slider4_ValueChanged(Windows::Foundation::IInspectable const& sender,
             Microsoft::UI::Xaml::Controls::Primitives::RangeBaseValueChangedEventArgs const& args);
+
+        void header4_TextChanged(Windows::Foundation::IInspectable const& sender,
+            Microsoft::UI::Xaml::Controls::TextChangedEventArgs const& args);
 
         void slider5_ValueChanged(Windows::Foundation::IInspectable const& sender,
             Microsoft::UI::Xaml::Controls::Primitives::RangeBaseValueChangedEventArgs const& args);
 
+        void header5_TextChanged(Windows::Foundation::IInspectable const& sender,
+            Microsoft::UI::Xaml::Controls::TextChangedEventArgs const& args);
+
         void slider6_ValueChanged(Windows::Foundation::IInspectable const& sender,
             Microsoft::UI::Xaml::Controls::Primitives::RangeBaseValueChangedEventArgs const& args);
+
+        void header6_TextChanged(Windows::Foundation::IInspectable const& sender,
+            Microsoft::UI::Xaml::Controls::TextChangedEventArgs const& args);
 
         void param_TextChanged(Windows::Foundation::IInspectable const& sender,
             Microsoft::UI::Xaml::Controls::TextChangedEventArgs const& args);

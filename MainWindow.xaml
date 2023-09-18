@@ -18,45 +18,52 @@
       <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
         <Slider x:Name="slider1" Margin="0,25,50,0"
             Minimum="0.0"
-            Maximum="0.01" StepFrequency="0.00001"  Width="300" ValueChanged="slider1_ValueChanged" />
-        <TextBox x:Name="header1" Header="Ozone Absorbtion R:" Width="150" HorizontalAlignment="Left"/>
+            Maximum="0.01" StepFrequency="0.00001" Width="300" ValueChanged="slider1_ValueChanged" />
+        <TextBox Margin="0,10,0,0" x:Name="header1" Header="Ozone Absorbtion R:" Width="150" 
+				 HorizontalAlignment="Left" Text="0.0001" TextChanged="header1_TextChanged"/>
       </StackPanel>
 
       <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
         <Slider x:Name="slider2" Margin="0,25,50,0"
             Minimum="0.0"
-            Maximum="0.01" StepFrequency="0.00001"  Width="300" ValueChanged="slider2_ValueChanged" />
-        <TextBox x:Name="header2" Header="Ozone Absorbtion G:" Width="150" HorizontalAlignment="Left"/>
+            Maximum="0.01" StepFrequency="0.00001" Width="300" ValueChanged="slider2_ValueChanged" />
+        <TextBox Margin="0,10,0,0" x:Name="header2" Header="Ozone Absorbtion G:" Width="150" 
+				 HorizontalAlignment="Left" Text="0.0001" TextChanged="header2_TextChanged"/>
       </StackPanel>
 
       <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
         <Slider x:Name="slider3" Margin="0,25,50,0"
             Minimum="0.0"
-            Maximum="0.01" StepFrequency="0.00001"  Width="300" ValueChanged="slider3_ValueChanged" />
-        <TextBox x:Name="header3" Header="Ozone Absorbtion B:" Width="150" HorizontalAlignment="Left"/>
+            Maximum="0.01" StepFrequency="0.00001" Width="300" ValueChanged="slider3_ValueChanged" />
+        <TextBox Margin="0,10,0,0" x:Name="header3" Header="Ozone Absorbtion B:" 
+				 Width="150" HorizontalAlignment="Left" Text="0.0001" TextChanged="header3_TextChanged"/>
       </StackPanel>
 
       <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
         <Slider x:Name="slider4" Margin="0,25,50,0"
             Minimum="0.0"
-            Maximum="1.0" StepFrequency="0.01"  Width="300" ValueChanged="slider4_ValueChanged" />
-        <TextBox x:Name="header4" Header="Aerosols:" Width="150" HorizontalAlignment="Left"/>
+            Maximum="1.0" StepFrequency="0.01" Width="300" ValueChanged="slider4_ValueChanged" />
+        <TextBox Margin="0,10,0,0" x:Name="header4" Header="Aerosols:" Width="150" 
+				 HorizontalAlignment="Left" Text="0.0" TextChanged="header4_TextChanged"/>
       </StackPanel>
 
       <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
         <Slider x:Name="slider5" Margin="0,25,50,0"
             Minimum="-10.0"
-            Maximum="10.0" StepFrequency="0.1"  Width="300" ValueChanged="slider5_ValueChanged" />
-        <TextBox x:Name="header5" Header="Color:" Width="150" HorizontalAlignment="Left"/>
+            Maximum="10.0" StepFrequency="0.1" Width="300" ValueChanged="slider5_ValueChanged" />
+        <TextBox Margin="0,10,0,0" x:Name="header5" Header="Color:" Width="150" 
+				 HorizontalAlignment="Left" Text="0.0" TextChanged="header5_TextChanged"/>
       </StackPanel>
-
+	
       <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
         <Slider x:Name="slider6" Margin="0,25,50,0"
-            Minimum="0.0"
-            Maximum="10.0" StepFrequency="0.05"  Width="300" ValueChanged="slider6_ValueChanged" />
-        <TextBox x:Name="header6" Header="Sun:" Width="150" HorizontalAlignment="Left"/>
+            Minimum="0.0" Value ="0.0"
+            Maximum="10.0" StepFrequency="0.05" Width="300" ValueChanged="slider6_ValueChanged" />
+        <TextBox Margin="0,10,0,0" x:Name="header6" Header="Sun:" Width="150" 
+				 HorizontalAlignment="Left" Text="0.0" TextChanged="header6_TextChanged" />
       </StackPanel>
 
+		
       <StackPanel Visibility="Collapsed" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
         <TextBox x:Name="headerParam" Margin="0,0,50,0" Header="Flex Param:" Width="150" HorizontalAlignment="Left" TextChanged="param_TextChanged"/>
         <TextBox x:Name="headerOffset" Header="Flex Offset:" Width="150" HorizontalAlignment="Left" TextChanged="offset_TextChanged"/>
