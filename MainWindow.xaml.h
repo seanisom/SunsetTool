@@ -5,14 +5,14 @@
 
 #include "MainWindow.g.h"
 
+#include "MSFSMemory.h"
+#include "Model.h"
+
 namespace winrt::SunsetTool::implementation
 {
     struct MainWindow : MainWindowT<MainWindow>
     {
         MainWindow();
-
-        int32_t MyProperty();
-        void MyProperty(int32_t value);
 
         void myButton_Click(Windows::Foundation::IInspectable const& sender, Microsoft::UI::Xaml::RoutedEventArgs const& args);
 
@@ -54,11 +54,9 @@ namespace winrt::SunsetTool::implementation
         void header6_TextChanged(Windows::Foundation::IInspectable const& sender,
             Microsoft::UI::Xaml::Controls::TextChangedEventArgs const& args);
 
-        void param_TextChanged(Windows::Foundation::IInspectable const& sender,
-            Microsoft::UI::Xaml::Controls::TextChangedEventArgs const& args);
-
-        void offset_TextChanged(Windows::Foundation::IInspectable const& sender,
-            Microsoft::UI::Xaml::Controls::TextChangedEventArgs const& args);
+    private:
+        ::SunsetTool::Model m_model;
+        ::SunsetTool::MSFSMemory m_memory;
     };
 }
 

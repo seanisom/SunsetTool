@@ -63,12 +63,6 @@
 				 HorizontalAlignment="Left" Text="0.0" TextChanged="header6_TextChanged" />
       </StackPanel>
 
-		
-      <StackPanel Visibility="Collapsed" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
-        <TextBox x:Name="headerParam" Margin="0,0,50,0" Header="Flex Param:" Width="150" HorizontalAlignment="Left" TextChanged="param_TextChanged"/>
-        <TextBox x:Name="headerOffset" Header="Flex Offset:" Width="150" HorizontalAlignment="Left" TextChanged="offset_TextChanged"/>
-      </StackPanel>
-
     </StackPanel>
 
 
