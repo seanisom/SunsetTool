@@ -41,28 +41,33 @@ namespace winrt::SunsetTool::implementation
         myButton().Content(box_value(L"Loaded!"));
         myButton().IsEnabled(false);
 
-        header1().Text(std::to_wstring(m_model.AbsorbR()));
-        header2().Text(std::to_wstring(m_model.AbsorbG()));
-        header3().Text(std::to_wstring(m_model.AbsorbB()));
-        header4().Text(std::to_wstring(m_model.Aerosols()));
-        header5().Text(std::to_wstring(m_model.Color()));
-        header6().Text(std::to_wstring(m_model.Sun()));
+        ReloadModel();
     }
 
     void MainWindow::button2_Click(Windows::Foundation::IInspectable const&, RoutedEventArgs const&)
     {
         m_model = Model::Default();
 
-        header1().Text(std::to_wstring(m_model.AbsorbR()));
-        header2().Text(std::to_wstring(m_model.AbsorbG()));
-        header3().Text(std::to_wstring(m_model.AbsorbB()));
-        header4().Text(std::to_wstring(m_model.Aerosols()));
-        header5().Text(std::to_wstring(m_model.Color()));
-        header6().Text(std::to_wstring(m_model.Sun()));
+        ReloadModel();
+    }
+
+    void MainWindow::button3_Click(Windows::Foundation::IInspectable const&, RoutedEventArgs const&)
+    {
+        shareCode().Text(to_hstring(m_model.ToBase64()));
+    }
+
+    void MainWindow::button5_Click(Windows::Foundation::IInspectable const&, RoutedEventArgs const&)
+    {
+	    if (m_model.FromBase64(to_string(importCode().Text())))
+        {
+            importCode().Text(L"");
+            flyout2().Hide();
+            ReloadModel();
+        }
     }
 
     void MainWindow::slider1_ValueChanged(Windows::Foundation::IInspectable const&, 
-        Controls::Primitives::RangeBaseValueChangedEventArgs const& args)
+                                          Controls::Primitives::RangeBaseValueChangedEventArgs const& args)
     {
 	    if (const auto new_val = static_cast<float>(args.NewValue()); m_model.AbsorbR() != new_val)
         {
@@ -186,5 +191,15 @@ namespace winrt::SunsetTool::implementation
             slider6().Value(m_model.Sun());
         }
         catch (...) {};
+    }
+
+    void MainWindow::ReloadModel()
+    {
+        header1().Text(std::to_wstring(m_model.AbsorbR()));
+        header2().Text(std::to_wstring(m_model.AbsorbG()));
+        header3().Text(std::to_wstring(m_model.AbsorbB()));
+        header4().Text(std::to_wstring(m_model.Aerosols()));
+        header5().Text(std::to_wstring(m_model.Color()));
+        header6().Text(std::to_wstring(m_model.Sun()));
     }
 }

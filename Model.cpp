@@ -48,6 +48,18 @@ static std::string base64_decode(const std::string& in) {
     return out;
 }
 
+std::vector<std::string> split(const std::string& s, char delim) {
+    std::vector<std::string> result;
+    std::stringstream ss(s);
+    std::string item;
+
+    while (getline(ss, item, delim)) {
+        result.push_back(item);
+    }
+
+    return result;
+}
+
 
 Model::Model(const float r, const float g, const float b,
                          const float aerosols, const float color, const float sun, std::wstring name) :
@@ -165,25 +177,53 @@ void Model::Name(std::wstring in)  // NOLINT(performance-unnecessary-value-param
     m_name = std::move(in);
 }
 
+
 bool Model::IsDirty() const
 {
     return m_dirty;
 }
 
 
-std::string Model::ToBase64()
+std::string Model::ToBase64() const
 {
-    return "";
+    // TODO - support wstring names
+	#pragma warning(suppress: 4244)
+    const std::string ustring = { m_name.cbegin(), m_name.cend() };
+
+    std::stringstream str;
+    str << "v1.0," << m_absorb_r << "," << m_absorb_g << "," << m_absorb_b << ","
+        << m_aerosols << "," << m_color << "," << m_sun << "," << ustring;
+
+    return base64_encode(str.str());
 }
 
 
 bool Model::FromBase64(const std::string& input)
 {
-    return false;
+	const auto decoded = base64_decode(input);
+
+	const auto results = split(decoded, ',');
+
+    if (results.size() != 8)
+		return false;
+
+    if (results[0] != "v1.0")
+        return false;
+
+    m_absorb_r = stof(results[1]);
+    m_absorb_g = stof(results[2]);
+    m_absorb_b = stof(results[3]);
+    m_aerosols = stof(results[4]);
+    m_color = stof(results[5]);
+    m_sun = stof(results[6]);
+
+    m_name = { results[7].cbegin(), results[7].cend() };
+
+    return true;
 }
 
 
-bool Model::LoadFromIni(const std::wstring& file_name)
+bool Model::LoadFromINI(const std::wstring& file_name)
 {
     return false;
 }

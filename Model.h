@@ -28,10 +28,10 @@ public:
 
     [[nodiscard]] auto IsDirty() const -> bool;
 
-    auto LoadFromIni(const std::wstring& file_name) -> bool;
+    auto LoadFromINI(const std::wstring& file_name) -> bool;
     auto SaveToINI(const std::wstring& file_name) -> bool;
 
-    auto ToBase64() -> std::string;
+    auto ToBase64() const -> std::string;
     auto FromBase64(const std::string& input) -> bool;
 
 private:

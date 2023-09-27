@@ -18,6 +18,10 @@ namespace winrt::SunsetTool::implementation
 
         void button2_Click(Windows::Foundation::IInspectable const& sender, Microsoft::UI::Xaml::RoutedEventArgs const& args);
 
+        void button3_Click(Windows::Foundation::IInspectable const& sender, Microsoft::UI::Xaml::RoutedEventArgs const& args);
+
+        void button5_Click(Windows::Foundation::IInspectable const& sender, Microsoft::UI::Xaml::RoutedEventArgs const& args);
+
         void slider1_ValueChanged(Windows::Foundation::IInspectable const& sender, 
             Microsoft::UI::Xaml::Controls::Primitives::RangeBaseValueChangedEventArgs const& args);
 
@@ -55,6 +59,8 @@ namespace winrt::SunsetTool::implementation
             Microsoft::UI::Xaml::Controls::TextChangedEventArgs const& args);
 
     private:
+        void ReloadModel();
+
         ::SunsetTool::Model m_model;
         ::SunsetTool::MSFSMemory m_memory;
     };
