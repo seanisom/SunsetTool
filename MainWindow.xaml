@@ -8,35 +8,44 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
 
-    <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
-        
-      <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
-        <Button x:Name="myButton" Margin="0,25,25,25" Click="myButton_Click">Load From Sim</Button>
-        <Button x:Name="button2" Margin="0,25,25,25" Click="button2_Click">Reset Defaults</Button>
-        <Button x:Name="button3" Margin="0,25,25,25" Content="Share" Click="button3_Click">
-            <Button.Flyout>
-                <Flyout>
-                    <StackPanel>
-                        <TextBox Margin="0,10,0,0" x:Name="shareCode" Header="Copy this Share Code" Width="300" 
+    <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center" x:Name="rootPanel">
+
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <Button x:Name="myButton" Margin="0,25,25,25" Click="myButton_Click">Load From Sim</Button>
+            <Button x:Name="button2" Margin="0,25,25,25" Click="button2_Click">Reset Defaults</Button>
+            <Button x:Name="button3" Margin="0,25,25,25" Content="Share" Click="button3_Click">
+                <Button.Flyout>
+                    <Flyout>
+                        <StackPanel>
+                            <TextBox Margin="0,10,0,0" x:Name="shareCode" Header="Copy this Share Code" Width="300" 
                                  HorizontalAlignment="Left" IsReadOnly="True" />
-                    </StackPanel>
-                </Flyout>
-            </Button.Flyout>
-        </Button>
-        <Button x:Name="button4" Margin="0,25,25,25" Content="Import">
-              <Button.Flyout>
-                  <Flyout x:Name="flyout2">
-                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
-                          <TextBox Margin="0,10,0,0" x:Name="importCode" Header="Import a Share Code" Width="300" 
+                        </StackPanel>
+                    </Flyout>
+                </Button.Flyout>
+            </Button>
+            <Button x:Name="button4" Margin="0,25,25,25" Content="Import">
+                <Button.Flyout>
+                    <Flyout x:Name="flyout2">
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+                            <TextBox Margin="0,10,0,0" x:Name="importCode" Header="Import a Share Code" Width="300" 
                                    HorizontalAlignment="Left" />
-                          <Button x:Name="button5" Margin="15,37,0,0" Click="button5_Click">Load</Button>
-                    </StackPanel>
-                  </Flyout>
-              </Button.Flyout>
-        </Button>
-      </StackPanel>
-      
-      <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+                            <Button x:Name="button5" Margin="15,37,0,0" Click="button5_Click">Load</Button>
+                        </StackPanel>
+                    </Flyout>
+                </Button.Flyout>
+            </Button>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <ComboBox Margin="0,0,25,25" IsEditable="True" x:Name="Preset" 
+                      SelectionChanged="Preset_SelectionChanged" Header="Presets" PlaceholderText="Pick a preset" Width="200">
+                <x:String>Default</x:String>
+            </ComboBox>
+            <Button x:Name="button6" Margin="0,28,25,25" Click="button6_Click">Save</Button>
+            <Button x:Name="button7" Margin="0,28,25,25" Click="button7_Click">Delete</Button>
+
+        </StackPanel>
+
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
         <Slider x:Name="slider1" Margin="0,25,50,0"
             Minimum="0.0"
             Maximum="0.01" StepFrequency="0.00001" Width="300" ValueChanged="slider1_ValueChanged" />

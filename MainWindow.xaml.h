@@ -58,6 +58,15 @@ namespace winrt::SunsetTool::implementation
         void header6_TextChanged(Windows::Foundation::IInspectable const& sender,
             Microsoft::UI::Xaml::Controls::TextChangedEventArgs const& args);
 
+        void Preset_SelectionChanged(Windows::Foundation::IInspectable const& sender,
+            Microsoft::UI::Xaml::Controls::SelectionChangedEventArgs const& args);
+
+        fire_and_forget button6_Click(Windows::Foundation::IInspectable const& sender,
+            Microsoft::UI::Xaml::RoutedEventArgs const& args);
+
+        fire_and_forget button7_Click(Windows::Foundation::IInspectable const& sender,
+            Microsoft::UI::Xaml::RoutedEventArgs const& args);
+
     private:
         void ReloadModel();
 

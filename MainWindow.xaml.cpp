@@ -15,7 +15,9 @@
 
 
 using namespace winrt;
+using namespace winrt::Windows::System::Threading;
 using namespace Microsoft::UI::Xaml;
+using namespace Windows::Foundation;
 
 using namespace ::SunsetTool;
 
@@ -25,11 +27,12 @@ namespace winrt::SunsetTool::implementation
     MainWindow::MainWindow() : m_model(Model::Default())
     {
         InitializeComponent();
-        AppWindow().Resize({ 800, 600 });
+        AppWindow().Resize({ 700, 700 });
         const auto presenter = AppWindow().Presenter().as <
             Microsoft::UI::Windowing::OverlappedPresenter>();
         presenter.IsResizable(false);
         AppWindow().Title(L"Sunset Tool");
+        Preset().SelectedIndex(0);
     }
 
     void MainWindow::myButton_Click(IInspectable const&, RoutedEventArgs const&)
@@ -191,6 +194,59 @@ namespace winrt::SunsetTool::implementation
             slider6().Value(m_model.Sun());
         }
         catch (...) {};
+    }
+
+    void MainWindow::Preset_SelectionChanged(Windows::Foundation::IInspectable const& sender, Microsoft::UI::Xaml::Controls::SelectionChangedEventArgs const& args)
+    {
+        const auto index = Preset().SelectedIndex();
+        if (index == -1)
+        {
+	        const auto item = Preset().SelectedItem();
+            Preset().Items().Append(item);
+            Preset().SelectedIndex(Preset().Items().Size() - 1);
+        }
+        else
+        {
+	        // Load the item into m_model
+        }
+    }
+
+    fire_and_forget MainWindow::button6_Click(Windows::Foundation::IInspectable const& sender, Microsoft::UI::Xaml::RoutedEventArgs const& args)
+    {
+        const auto index = Preset().SelectedIndex();
+        if (index == 0)
+        {
+            const Controls::ContentDialog dialog{};
+            dialog.XamlRoot(rootPanel().XamlRoot());
+            dialog.Title(box_value(L"Error"));
+            dialog.Content(box_value(L"You cannot edit the Default values!\n" \
+									 L"Please create a new preset and save that."));
+            dialog.CloseButtonText(L"Ok");
+            co_await dialog.ShowAsync();
+        }
+
+        // TODO - programmatic path
+        m_model.SaveToINI(L"C:\\SunsetTool.ini");
+    }
+
+    fire_and_forget MainWindow::button7_Click(Windows::Foundation::IInspectable const& sender, Microsoft::UI::Xaml::RoutedEventArgs const& args)
+    {
+	    const auto index = Preset().SelectedIndex();
+        if (index != 0)
+        {
+            Preset().SelectedIndex(0);
+            Preset().Items().RemoveAt(index);
+        }
+        else
+        {
+            // https://stackoverflow.com/questions/68122223/how-can-you-co-await-in-a-c-winrt-lambda
+            const Controls::ContentDialog dialog{};
+            dialog.XamlRoot(rootPanel().XamlRoot());
+            dialog.Title(box_value(L"Error"));
+            dialog.Content(box_value(L"You cannot delete the Default sim values!"));
+            dialog.CloseButtonText(L"Ok");
+            co_await dialog.ShowAsync();
+        }
     }
 
     void MainWindow::ReloadModel()
