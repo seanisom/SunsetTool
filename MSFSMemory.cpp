@@ -86,7 +86,7 @@ bool SunsetTool::MSFSMemory::Load()
 		}
 	}
 
-	m_offset_absorb_r += m_base_address + 88;
+	m_offset_absorb_r += m_base_address + 336;
 	m_offset_absorb_g = m_offset_absorb_r + 4;
 	m_offset_absorb_b = m_offset_absorb_g + 4;
 

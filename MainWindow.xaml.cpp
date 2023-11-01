@@ -219,8 +219,8 @@ namespace winrt::SunsetTool::implementation
             const Controls::ContentDialog dialog{};
             dialog.XamlRoot(rootPanel().XamlRoot());
             dialog.Title(box_value(L"Error"));
-            dialog.Content(box_value(L"You cannot edit the Default values!\n" \
-									 L"Please create a new preset and save that."));
+            dialog.Content(box_value(L"You cannot edit the Default preset!\n" \
+									 L"Please type a new preset name in the box."));
             dialog.CloseButtonText(L"Ok");
             co_await dialog.ShowAsync();
         }
