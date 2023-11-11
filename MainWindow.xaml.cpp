@@ -37,7 +37,7 @@ namespace winrt::SunsetTool::implementation
 
     void MainWindow::myButton_Click(IInspectable const&, RoutedEventArgs const&)
     {
-        m_memory.Load();
+        m_version = m_memory.Load();
 
         m_memory.ReadMemory(m_model);
 
@@ -49,7 +49,10 @@ namespace winrt::SunsetTool::implementation
 
     void MainWindow::button2_Click(Windows::Foundation::IInspectable const&, RoutedEventArgs const&)
     {
-        m_model = Model::Default();
+        if (m_version == MSFSMemory::EVersion::SU14)
+            m_model = Model::DefaultSU14();
+        else
+			m_model = Model::Default();
 
         ReloadModel();
     }

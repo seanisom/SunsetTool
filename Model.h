@@ -10,6 +10,7 @@ public:
         float aerosols, float color, float sun, std::wstring name);
 
     static Model Default();
+    static Model DefaultSU14();
 
     [[nodiscard]] auto AbsorbR() const -> float;
     auto AbsorbR(float in) -> void;

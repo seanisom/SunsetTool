@@ -9,6 +9,14 @@ class Model;
 class MSFSMemory
 {
 public:
+	enum class EVersion
+	{
+		None = 0,
+		Unknown,
+		SU13,
+		SU14
+	};
+
 	MSFSMemory() = default;
 	~MSFSMemory();
 	MSFSMemory(const MSFSMemory& other) = delete;
@@ -16,7 +24,7 @@ public:
 	MSFSMemory& operator=(const MSFSMemory& other) = delete;
 	MSFSMemory& operator=(MSFSMemory&& other) noexcept = delete;
 
-	auto Load() -> bool;
+	auto Load() -> EVersion;
 
 	auto ReadMemory(Model& model) -> bool;
 	auto WriteMemory(const Model& model) -> bool;

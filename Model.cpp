@@ -72,7 +72,7 @@ Model::Model(const float r, const float g, const float b,
 	m_name(std::move(name)) { }
 
 
-Model Model::Default()
+Model Model::DefaultSU14()
 {
 	return Model
 	{
@@ -85,6 +85,22 @@ Model Model::Default()
         L"Default"
 	};
 }
+
+
+Model Model::Default()
+{
+    return Model
+    {
+		0.000650f,
+		0.001881f,
+		0.000085f,
+        0.1f,
+        1.0f,
+        1.0f,
+        L"Default"
+    };
+}
+
 
 
 float Model::AbsorbR() const

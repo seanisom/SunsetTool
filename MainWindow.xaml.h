@@ -72,6 +72,7 @@ namespace winrt::SunsetTool::implementation
 
         ::SunsetTool::Model m_model;
         ::SunsetTool::MSFSMemory m_memory;
+        ::SunsetTool::MSFSMemory::EVersion m_version;
     };
 }
 
